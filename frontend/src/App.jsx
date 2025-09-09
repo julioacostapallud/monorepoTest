@@ -16,17 +16,23 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>🚀 Monorepo Test - Frontend</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          ✅ <strong>Frontend modificado exitosamente!</strong>
+        </p>
+        <p>
+          🔄 Este cambio debería activar solo el deploy de Netlify
+        </p>
+        <p>
+          📅 Última actualización: {new Date().toLocaleString()}
         </p>
       </div>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        🎯 Monorepo con deploys condicionales funcionando correctamente
       </p>
     </>
   )

@@ -35,8 +35,28 @@
 
 .card {
   padding: 2em;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.card p {
+  margin: 0.8em 0;
+  font-size: 1.1em;
 }
 
 .read-the-docs {
   color: #888;
+  font-weight: 500;
+  margin-top: 2em;
+}
+
+h1 {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.5em;
+  margin-bottom: 1em;
 }
