@@ -3,7 +3,7 @@
   base = "."
   
   # Comando para construir el frontend
-  command = "cd frontend && npm install && npm run build"
+  command = "cd frontend && npm ci && npm run build"
   
   # Directorio donde se generan los archivos estáticos
   publish = "frontend/dist"
