@@ -3,7 +3,7 @@
   base = "."
   
   # Comando para construir el frontend
-  command = "cd frontend && npm install && npm run build"
+  command = "cd frontend && npm install --no-workspaces && npm run build"
   
   # Directorio donde se generan los archivos estáticos
   publish = "frontend/dist"
@@ -18,8 +18,9 @@
   # Variables de entorno para el build
   NODE_ENV = "production"
   
-  # Ignorar workspaces para evitar conflictos
+  # Configuración para evitar conflictos de workspaces
   NPM_CONFIG_WORKSPACES = "false"
+  NPM_CONFIG_INCLUDE_WORKSPACE_ROOT = "false"
 
 # Configuración de redirects para SPA (Single Page Application)
 [[redirects]]
