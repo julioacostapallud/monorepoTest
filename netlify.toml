@@ -1,9 +1,9 @@
 [build]
   # Directorio base del proyecto (raíz del monorepo)
-  base = ".."
+  base = "."
   
   # Comando para construir el frontend
-  command = "cd frontend && npm run build"
+  command = "cd frontend && npm install && npm run build"
   
   # Directorio donde se generan los archivos estáticos
   publish = "frontend/dist"
