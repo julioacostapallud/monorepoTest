@@ -39,6 +39,12 @@ function App() {
         <p>
           ⚡ Backend NO debería hacer build (deploy condicional funcionando)
         </p>
+        <p>
+          🔥 <strong>SEGUNDO TEST: Verificando deploys condicionales</strong>
+        </p>
+        <p>
+          🚀 Vercel debería estar configurado para NO hacer build ahora
+        </p>
       </div>
       <p className="read-the-docs">
         🎯 Monorepo con deploys condicionales funcionando correctamente
