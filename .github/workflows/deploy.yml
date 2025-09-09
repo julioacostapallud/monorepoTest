@@ -1,0 +1,61 @@
+name: Conditional Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      frontend: ${{ steps.changes.outputs.frontend }}
+      backend: ${{ steps.changes.outputs.backend }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            frontend:
+              - 'frontend/**'
+              - 'netlify.toml'
+            backend:
+              - 'backend/**'
+              - 'vercel.json'
+              - '.vercelignore'
+
+  deploy-frontend:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.frontend == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify Deploy
+        run: |
+          echo "🚀 Frontend changes detected - triggering Netlify deploy"
+          # Netlify se activará automáticamente por el webhook de GitHub
+          # Solo se ejecutará si hay cambios en frontend/
+
+  deploy-backend:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.backend == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel Deploy
+        run: |
+          echo "🚀 Backend changes detected - triggering Vercel deploy"
+          # Vercel se activará automáticamente por el webhook de GitHub
+          # Solo se ejecutará si hay cambios en backend/
+
+  no-changes:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.frontend == 'false' && needs.detect-changes.outputs.backend == 'false'
+    runs-on: ubuntu-latest
+    steps:
+      - name: No Changes
+        run: |
+          echo "ℹ️ No changes detected in frontend or backend - skipping deploy"

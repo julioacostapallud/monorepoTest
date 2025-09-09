@@ -7,6 +7,9 @@
   
   # Directorio donde se generan los archivos estáticos
   publish = "frontend/dist"
+  
+  # Ignorar build si no hay cambios en frontend
+  ignore = "./scripts/check-changes.sh frontend"
 
 [build.environment]
   # Versión de Node.js

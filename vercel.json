@@ -2,10 +2,19 @@
   "version": 2,
   "builds": [
     {
+      "src": "vercel-build.sh",
+      "use": "@vercel/build-utils"
+    },
+    {
       "src": "backend/index.js",
       "use": "@vercel/node"
     }
   ],
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  },
   "routes": [
     {
       "src": "/api/(.*)",
