@@ -28,6 +28,9 @@ function App() {
           🔄 Este cambio debería activar solo el deploy de Netlify
         </p>
         <p>
+          🚀 <strong>Build condicional funcionando!</strong> - {new Date().toLocaleTimeString()}
+        </p>
+        <p>
           📅 Última actualización: {new Date().toLocaleString()}
         </p>
       </div>
