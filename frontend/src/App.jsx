@@ -33,6 +33,12 @@ function App() {
         <p>
           📅 Última actualización: {new Date().toLocaleString()}
         </p>
+        <p>
+          🎯 <strong>TEST: Solo Frontend debería deployar</strong>
+        </p>
+        <p>
+          ⚡ Backend NO debería hacer build (deploy condicional funcionando)
+        </p>
       </div>
       <p className="read-the-docs">
         🎯 Monorepo con deploys condicionales funcionando correctamente
