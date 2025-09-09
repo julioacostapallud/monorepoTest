@@ -2,19 +2,10 @@
   "version": 2,
   "builds": [
     {
-      "src": "vercel-build.sh",
-      "use": "@vercel/build-utils"
-    },
-    {
       "src": "backend/index.js",
       "use": "@vercel/node"
     }
   ],
-  "git": {
-    "deploymentEnabled": {
-      "main": true
-    }
-  },
   "routes": [
     {
       "src": "/api/(.*)",
@@ -31,10 +22,5 @@
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "backend/index.js": {
-      "maxDuration": 10
-    }
   }
 }
