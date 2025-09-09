@@ -3,7 +3,7 @@
   base = "."
   
   # Comando para construir el frontend
-  command = "cd frontend && npm install --no-workspaces && npm run build"
+  command = "cd frontend && rm -f package-lock.json && npm install --legacy-peer-deps && npm run build"
   
   # Directorio donde se generan los archivos estáticos
   publish = "frontend/dist"
@@ -19,8 +19,7 @@
   NODE_ENV = "production"
   
   # Configuración para evitar conflictos de workspaces
-  NPM_CONFIG_WORKSPACES = "false"
-  NPM_CONFIG_INCLUDE_WORKSPACE_ROOT = "false"
+  NPM_CONFIG_LEGACY_PEER_DEPS = "true"
 
 # Configuración de redirects para SPA (Single Page Application)
 [[redirects]]
