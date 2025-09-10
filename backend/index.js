@@ -34,7 +34,8 @@ app.get('/api/status', (req, res) => {
       message: 'TEST: Solo Backend debería deployar',
       description: 'Este cambio debería activar solo el deploy de Vercel',
       conditionalDeployment: 'Netlify NO debería hacer build (sin cambios en frontend)',
-      timestamp: now.toISOString()
+      timestamp: now.toISOString(),
+      debug: 'Forcing Vercel build without ignoreCommand'
     }
   });
 });
