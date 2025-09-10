@@ -29,7 +29,13 @@ app.get('/api/status', (req, res) => {
     }),
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     uptime: process.uptime(),
-    environment: process.env.NODE_ENV || 'development'
+    environment: process.env.NODE_ENV || 'development',
+    test: {
+      message: 'TEST: Solo Backend debería deployar',
+      description: 'Este cambio debería activar solo el deploy de Vercel',
+      conditionalDeployment: 'Netlify NO debería hacer build (sin cambios en frontend)',
+      timestamp: now.toISOString()
+    }
   });
 });
 
