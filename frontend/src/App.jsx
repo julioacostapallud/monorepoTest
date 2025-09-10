@@ -45,6 +45,12 @@ function App() {
         <p>
           🚀 Vercel debería estar configurado para NO hacer build ahora
         </p>
+        <p>
+          🧪 <strong>TERCER TEST: Probando ignoreCommand</strong>
+        </p>
+        <p>
+          ⚡ Solo Netlify debería hacer build, Vercel NO
+        </p>
       </div>
       <p className="read-the-docs">
         🎯 Monorepo con deploys condicionales funcionando correctamente
