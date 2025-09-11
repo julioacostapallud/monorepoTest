@@ -18,54 +18,7 @@ body {
   flex-direction: column;
 }
 
-/* Header que ocupa 100% del ancho */
-.header {
-  width: 100%;
-  background: #f5f5f5;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 1.5rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-left h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 0.25rem;
-}
-
-.header-left p {
-  font-size: 0.9rem;
-  color: #666666;
-}
-
-.header-right {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.tech-icon {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease;
-  cursor: pointer;
-}
-
-.tech-icon:hover {
-  transform: scale(1.1);
-}
-
-.tech-icon img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-}
+/* Estilos del header movidos a Header.css */
 
 /* Contenido principal */
 .main-content {

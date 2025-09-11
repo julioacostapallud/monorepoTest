@@ -22,9 +22,6 @@ FROM nginx:alpine
 # Copiar archivos buildados
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copiar archivos públicos (iconos)
-COPY --from=builder /app/public /usr/share/nginx/html
-
 # Copiar configuración personalizada de nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 
