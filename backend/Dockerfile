@@ -1,5 +1,5 @@
 # Multi-stage build para optimizar el tamaño
-FROM node:18-alpine AS builder
+FROM node:22-alpine AS builder
 
 # Establecer directorio de trabajo
 WORKDIR /app
@@ -7,8 +7,8 @@ WORKDIR /app
 # Copiar package.json y package-lock.json
 COPY package*.json ./
 
-# Instalar dependencias
-RUN npm ci --only=production
+# Instalar dependencias (incluyendo devDependencies para el build)
+RUN npm ci
 
 # Copiar código fuente
 COPY . .
@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Stage de producción
-FROM node:18-alpine AS production
+FROM node:22-alpine AS production
 
 # Crear usuario no-root para seguridad
 RUN addgroup -g 1001 -S nodejs
