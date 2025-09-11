@@ -1,26 +1,10 @@
-/* Reset básico */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: #ffffff;
-  color: #1a1a1a;
-  line-height: 1.5;
-}
-
 .app {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* Estilos del header movidos a Header.css */
-
-/* Contenido principal */
 .main-content {
   flex: 1;
   display: flex;
@@ -30,69 +14,15 @@ body {
   background: #ffffff;
 }
 
-/* Indicador de estado minimalista */
-.status-indicator {
+/* Mensaje de bienvenida */
+.welcome-message {
   text-align: center;
+  color: #333333;
 }
 
-.status {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  font-size: 1rem;
-  color: #666666;
-}
-
-.status-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #666666;
-}
-
-.status.loading .status-dot {
-  background: #ffa500;
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-.status.success .status-dot {
-  background: #28a745;
-}
-
-.status.error .status-dot {
-  background: #dc3545;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-    padding: 1rem;
-  }
-  
-  .header-right {
-    gap: 1rem;
-  }
-  
-  .tech-icon {
-    width: 32px;
-    height: 32px;
-  }
-  
-  .tech-icon img {
-    width: 24px;
-    height: 24px;
-  }
+.welcome-message h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
 }

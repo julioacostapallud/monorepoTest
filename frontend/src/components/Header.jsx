@@ -1,14 +1,6 @@
 import React from 'react';
 import './Header.css';
 
-// Importar iconos desde src/icons
-import reactIcon from '../icons/react.png';
-import nestIcon from '../icons/nest.png';
-import postgreIcon from '../icons/postgre.png';
-import dockerIcon from '../icons/docker.png';
-import northflankIcon from '../icons/northflank.svg';
-import prismaIcon from '../icons/prisma.png';
-
 const Header = () => {
   return (
     <header className="header">
@@ -19,28 +11,11 @@ const Header = () => {
         </div>
         
         <div className="header-right">
-          <div className="tech-icon" title="React">
-            <img src={reactIcon} alt="React" />
-          </div>
-          
-          <div className="tech-icon" title="NestJS">
-            <img src={nestIcon} alt="NestJS" />
-          </div>
-          
-          <div className="tech-icon" title="PostgreSQL">
-            <img src={postgreIcon} alt="PostgreSQL" />
-          </div>
-          
-          <div className="tech-icon" title="Docker">
-            <img src={dockerIcon} alt="Docker" />
-          </div>
-          
-          <div className="tech-icon" title="Northflank">
-            <img src={northflankIcon} alt="Northflank" />
-          </div>
-          
-          <div className="tech-icon" title="Prisma">
-            <img src={prismaIcon} alt="Prisma" />
+          <div className="user-icon" title="Usuario">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z" fill="currentColor"/>
+              <path d="M12 14C7.58172 14 4 17.5817 4 22H20C20 17.5817 16.4183 14 12 14Z" fill="currentColor"/>
+            </svg>
           </div>
         </div>
       </div>
