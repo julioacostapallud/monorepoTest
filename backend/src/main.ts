@@ -12,13 +12,9 @@ async function bootstrap() {
     
     const app = await NestFactory.create(AppModule);
     
-    // Configurar CORS
+    // Configurar CORS básico
     app.enableCors({
-      origin: [
-        'https://p01--frontend--5k9g86lnqs8x.code.run',
-        'http://localhost:5173', // Para desarrollo local
-        'http://localhost:3000'  // Para desarrollo local
-      ],
+      origin: true, // Permitir todos los orígenes temporalmente
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Content-Type', 'Authorization'],
       credentials: true
@@ -54,6 +50,7 @@ async function bootstrap() {
     console.log(`📚 Swagger disponible en: http://localhost:${port}/api/docs`);
   } catch (error) {
     console.error('❌ Error al iniciar la aplicación:', error);
+    console.error('❌ Stack trace:', error.stack);
     process.exit(1);
   }
 }
