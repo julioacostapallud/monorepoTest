@@ -61,9 +61,10 @@ body {
   transform: scale(1.1);
 }
 
-.tech-icon svg {
+.tech-icon img {
   width: 28px;
   height: 28px;
+  object-fit: contain;
 }
 
 /* Contenido principal */
@@ -137,7 +138,7 @@ body {
     height: 32px;
   }
   
-  .tech-icon svg {
+  .tech-icon img {
     width: 24px;
     height: 24px;
   }
