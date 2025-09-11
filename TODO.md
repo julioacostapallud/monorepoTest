@@ -10,11 +10,12 @@
 ## 🎯 **FASE 1: Configuración de Servicios en Northflank**
 
 ### **1.1 Frontend Service (React Vite)**
-- [ ] Crear servicio "frontend" en Northflank
-- [ ] Configurar source: Git (monorepoTest)
-- [ ] Configurar path: `/frontend`
-- [ ] Configurar build: Docker
-- [ ] Configurar puerto: 3000 (o el que use Vite)
+- [x] Crear servicio "frontend" en Northflank
+- [x] Configurar source: Git (monorepoTest)
+- [x] Configurar path: `/frontend`
+- [x] Configurar build: Docker
+- [x] Configurar puerto: 80
+- [x] **URL**: https://p01--frontend--5k9g86lnqs8x.code.run/
 
 ### **1.2 Backend Service (Nest.js)**
 - [ ] Crear servicio "backend" en Northflank

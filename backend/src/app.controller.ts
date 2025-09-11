@@ -41,10 +41,22 @@ export class AppController {
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       uptime: process.uptime(),
       environment: process.env.NODE_ENV || 'development',
+      version: '1.0.0',
+      services: {
+        database: 'Neon DB (pending)',
+        cache: 'Not configured',
+        queue: 'Not configured'
+      },
+      endpoints: {
+        health: '/health',
+        status: '/api/status',
+        root: '/'
+      },
       test: {
-        message: 'TEST: Backend con Nest.js funcionando',
-        description: 'Este endpoint debería funcionar en Northflank',
-        timestamp: now.toISOString()
+        message: 'TEST: Backend con Nest.js funcionando en Northflank',
+        description: 'Este endpoint debería funcionar correctamente',
+        timestamp: now.toISOString(),
+        url: 'https://p01--backend--5k9g86lnqs8x.code.run/api/status'
       }
     };
   }
