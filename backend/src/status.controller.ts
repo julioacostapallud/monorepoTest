@@ -25,7 +25,7 @@ export class StatusController {
         services: {
           type: 'object',
           properties: {
-            database: { type: 'string', example: 'Neon DB (pending)' },
+            database: { type: 'string', example: 'Neon DB (connected)' },
             cache: { type: 'string', example: 'Not configured' },
             queue: { type: 'string', example: 'Not configured' }
           }
@@ -71,7 +71,7 @@ export class StatusController {
       environment: process.env.NODE_ENV || 'development',
       version: '1.0.0',
       services: {
-        database: 'Neon DB (pending)',
+        database: 'Neon DB (connected)',
         cache: 'Not configured',
         queue: 'Not configured'
       },
