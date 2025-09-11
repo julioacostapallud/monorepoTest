@@ -22,8 +22,9 @@ async function bootstrap() {
     .setTitle('Monorepo Test API')
     .setDescription('API del backend para el monorepo con Nest.js')
     .setVersion('1.0')
-    .addTag('health', 'Endpoints de salud y estado')
-    .addTag('status', 'Endpoints de información del sistema')
+    .addTag('app', 'Endpoints principales de la aplicación')
+    .addTag('health', 'Endpoints de salud y monitoreo del sistema')
+    .addTag('status', 'Endpoints de información detallada del sistema')
     .build();
   
   const document = SwaggerModule.createDocument(app, config);
