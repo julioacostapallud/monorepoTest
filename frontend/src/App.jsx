@@ -1,101 +1,169 @@
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { statusService } from './services/status/statusService'
+import { useState, useEffect } from 'react';
+import './App.css';
+import { statusService } from './services/status/statusService';
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [backendStatus, setBackendStatus] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [backendStatus, setBackendStatus] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchStatus = async () => {
       try {
-        setLoading(true)
-        const result = await statusService.getStatus()
+        setLoading(true);
+        const result = await statusService.getStatus();
         
         if (result.success) {
-          setBackendStatus(result.data)
-          setError(null)
+          setBackendStatus(result.data);
+          setError(null);
         } else {
-          setError(result.error)
+          setError(result.error);
         }
       } catch (err) {
-        setError(err.message)
+        setError(err.message);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchStatus()
-  }, [])
+    fetchStatus();
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>🚀 Monorepo Test - Frontend + Backend</h1>
-      
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-
-      {/* Backend Status Section */}
-      <div className="card">
-        <h2>🔗 Backend Status</h2>
-        {loading && <p>⏳ Cargando status del backend...</p>}
-        {error && <p>❌ Error: {error}</p>}
-        {backendStatus && (
-          <div>
-            <p><strong>Status:</strong> {backendStatus.status}</p>
-            <p><strong>Message:</strong> {backendStatus.message}</p>
-            <p><strong>Environment:</strong> {backendStatus.environment}</p>
-            <p><strong>Version:</strong> {backendStatus.version}</p>
-            <p><strong>Uptime:</strong> {Math.round(backendStatus.uptime)}s</p>
-            <p><strong>Date:</strong> {backendStatus.date}</p>
-            <p><strong>Time:</strong> {backendStatus.time}</p>
-            <p><strong>Timezone:</strong> {backendStatus.timezone}</p>
-            
-            <h3>🔧 Services:</h3>
-            <ul>
-              <li><strong>Database:</strong> {backendStatus.services.database}</li>
-              <li><strong>Cache:</strong> {backendStatus.services.cache}</li>
-              <li><strong>Queue:</strong> {backendStatus.services.queue}</li>
-            </ul>
-
-            <h3>🌐 Endpoints:</h3>
-            <ul>
-              <li><strong>Health:</strong> {backendStatus.endpoints.health}</li>
-              <li><strong>Status:</strong> {backendStatus.endpoints.status}</li>
-              <li><strong>Root:</strong> {backendStatus.endpoints.root}</li>
-            </ul>
-
-            <h3>🧪 Test Info:</h3>
-            <p><strong>Message:</strong> {backendStatus.test.message}</p>
-            <p><strong>Description:</strong> {backendStatus.test.description}</p>
-            <p><strong>URL:</strong> <a href={backendStatus.test.url} target="_blank" rel="noopener noreferrer">{backendStatus.test.url}</a></p>
+    <div className="app">
+      {/* Header */}
+      <header className="header">
+        <div className="header-content">
+          <div className="project-info">
+            <h1>🛠️ Trabajo Práctico Integrador</h1>
+            <h2>Desarrollo de Software</h2>
+            <p>Universidad Tecnológica Nacional - Facultad Regional Resistencia</p>
+            <div className="group-info">
+              <span className="group-badge">Grupo 1</span>
+            </div>
           </div>
-        )}
-      </div>
+          
+          <div className="tech-stack">
+            <h3>Stack Tecnológico</h3>
+            <div className="tech-icons">
+              <div className="tech-item">
+                <span className="tech-icon">⚛️</span>
+                <span>React</span>
+              </div>
+              <div className="tech-item">
+                <span className="tech-icon">🪺</span>
+                <span>NestJS</span>
+              </div>
+              <div className="tech-item">
+                <span className="tech-icon">🐘</span>
+                <span>PostgreSQL</span>
+              </div>
+              <div className="tech-item">
+                <span className="tech-icon">🐳</span>
+                <span>Docker</span>
+              </div>
+              <div className="tech-item">
+                <span className="tech-icon">☁️</span>
+                <span>Northflank</span>
+              </div>
+              <div className="tech-item">
+                <span className="tech-icon">🔗</span>
+                <span>Prisma</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
 
-      <p className="read-the-docs">
-        🎯 Monorepo con Frontend (React Vite) + Backend (Nest.js) funcionando en Northflank
-      </p>
-    </>
-  )
+      {/* Main Content */}
+      <main className="main-content">
+        <div className="status-section">
+          <h2>🔗 Estado de Conexión del Sistema</h2>
+          
+          {loading && (
+            <div className="status-card loading">
+              <div className="loading-spinner"></div>
+              <p>Conectando con el backend...</p>
+            </div>
+          )}
+          
+          {error && (
+            <div className="status-card error">
+              <div className="status-icon">❌</div>
+              <h3>Error de Conexión</h3>
+              <p>No se pudo conectar con el backend</p>
+              <p className="error-details">Error: {error}</p>
+            </div>
+          )}
+          
+          {backendStatus && (
+            <div className="status-card success">
+              <div className="status-icon">✅</div>
+              <h3>Sistema Conectado</h3>
+              
+              <div className="status-grid">
+                <div className="status-item">
+                  <span className="label">Estado:</span>
+                  <span className="value success">{backendStatus.status}</span>
+                </div>
+                
+                <div className="status-item">
+                  <span className="label">Base de Datos:</span>
+                  <span className="value success">{backendStatus.services.database}</span>
+                </div>
+                
+                <div className="status-item">
+                  <span className="label">Entorno:</span>
+                  <span className="value">{backendStatus.environment}</span>
+                </div>
+                
+                <div className="status-item">
+                  <span className="label">Versión:</span>
+                  <span className="value">{backendStatus.version}</span>
+                </div>
+                
+                <div className="status-item">
+                  <span className="label">Tiempo de Actividad:</span>
+                  <span className="value">{Math.floor(backendStatus.uptime)}s</span>
+                </div>
+                
+                <div className="status-item">
+                  <span className="label">Última Actualización:</span>
+                  <span className="value">{new Date(backendStatus.timestamp).toLocaleString('es-ES')}</span>
+                </div>
+              </div>
+              
+              <div className="endpoints-info">
+                <h4>📡 Endpoints Disponibles</h4>
+                <div className="endpoints-list">
+                  <div className="endpoint-item">
+                    <span className="endpoint-method">GET</span>
+                    <span className="endpoint-path">{backendStatus.endpoints.health}</span>
+                    <span className="endpoint-desc">Health Check</span>
+                  </div>
+                  <div className="endpoint-item">
+                    <span className="endpoint-method">GET</span>
+                    <span className="endpoint-path">{backendStatus.endpoints.status}</span>
+                    <span className="endpoint-desc">Estado del Sistema</span>
+                  </div>
+                  <div className="endpoint-item">
+                    <span className="endpoint-method">GET</span>
+                    <span className="endpoint-path">{backendStatus.endpoints.root}</span>
+                    <span className="endpoint-desc">Endpoint Raíz</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p>© 2025 - UTN FRRe - Grupo 1 - TPI Desarrollo de Software</p>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
