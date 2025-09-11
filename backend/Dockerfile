@@ -37,6 +37,8 @@ RUN npm ci --only=production && npm cache clean --force
 
 # Copiar archivos buildados desde el stage anterior
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+COPY --from=builder /app/prisma ./prisma
 
 # Cambiar ownership al usuario nestjs
 RUN chown -R nestjs:nodejs /app
