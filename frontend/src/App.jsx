@@ -2,6 +2,14 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import { statusService } from './services/status/statusService';
 
+// Importar iconos
+import reactIcon from '/icons/react.png';
+import nestIcon from '/icons/nest.png';
+import postgreIcon from '/icons/postgre.png';
+import dockerIcon from '/icons/docker.png';
+import northflankIcon from '/icons/northflank.svg';
+import prismaIcon from '/icons/prisma.png';
+
 function App() {
   const [backendStatus, setBackendStatus] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -40,27 +48,27 @@ function App() {
         
         <div className="header-right">
           <div className="tech-icon" title="React">
-            <img src="/icons/react.png" alt="React" />
+            <img src={reactIcon} alt="React" />
           </div>
           
           <div className="tech-icon" title="NestJS">
-            <img src="/icons/nest.png" alt="NestJS" />
+            <img src={nestIcon} alt="NestJS" />
           </div>
           
           <div className="tech-icon" title="PostgreSQL">
-            <img src="/icons/postgre.png" alt="PostgreSQL" />
+            <img src={postgreIcon} alt="PostgreSQL" />
           </div>
           
           <div className="tech-icon" title="Docker">
-            <img src="/icons/docker.png" alt="Docker" />
+            <img src={dockerIcon} alt="Docker" />
           </div>
           
           <div className="tech-icon" title="Northflank">
-            <img src="/icons/northflank.svg" alt="Northflank" />
+            <img src={northflankIcon} alt="Northflank" />
           </div>
           
           <div className="tech-icon" title="Prisma">
-            <img src="/icons/prisma.png" alt="Prisma" />
+            <img src={prismaIcon} alt="Prisma" />
           </div>
         </div>
       </header>
