@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="520" viewBox="0 0 1400 520">
+  <title>Linea de vida de una Orden (cierra en COMPRAS)</title>
+  <defs>
+    <style>
+      .box{fill:#fff;stroke:#111827;stroke-width:1.2}
+      .lane{fill:#eaf2ff}
+      .lane2{fill:#eafcec}
+      .lane3{fill:#fff4d6}
+      .txt{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#111827}
+      .small{font-size:12px;fill:#374151}
+      .cap{font-weight:bold}
+    </style>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#111827"/>
+    </marker>
+  </defs>
+
+  <!-- Lanes -->
+  <rect x="0" y="60" width="1400" height="80" class="lane"/>
+  <text x="12" y="80" class="txt cap">COMPRAS (dueña de la orden)</text>
+
+  <rect x="0" y="210" width="1400" height="70" class="lane2"/>
+  <text x="12" y="230" class="txt cap">STOCK (reserva; informa a COMPRAS)</text>
+
+  <rect x="0" y="360" width="1400" height="70" class="lane3"/>
+  <text x="12" y="380" class="txt cap">LOGÍSTICA (envío; informa a COMPRAS)</text>
+
+  <!-- Estados COMPRAS (en línea, sin superposición) -->
+  <!-- 1 -->
+  <g transform="translate(40,85)">
+    <rect width="200" height="50" rx="8" class="box"/>
+    <text x="100" y="22" text-anchor="middle" class="txt cap">BORRADOR</text>
+    <text x="100" y="40" text-anchor="middle" class="small">Cliente • Ítems (0+)</text>
+  </g>
+  <!-- 2 -->
+  <g transform="translate(260,85)">
+    <rect width="220" height="50" rx="8" class="box"/>
+    <text x="110" y="22" text-anchor="middle" class="txt cap">LISTA_PARA_CONFIRMAR</text>
+    <text x="110" y="40" text-anchor="middle" class="small">Cliente ✓ • Ítems (1..n)</text>
+  </g>
+  <!-- 3 -->
+  <g transform="translate(500,85)">
+    <rect width="220" height="50" rx="8" class="box"/>
+    <text x="110" y="22" text-anchor="middle" class="txt cap">PENDIENTE_STOCK</text>
+    <text x="110" y="40" text-anchor="middle" class="small">Reserva solicitada a STOCK</text>
+  </g>
+  <!-- 4 -->
+  <g transform="translate(740,85)">
+    <rect width="220" height="50" rx="8" class="box"/>
+    <text x="110" y="22" text-anchor="middle" class="txt cap">STOCK_RESERVADO</text>
+    <text x="110" y="40" text-anchor="middle" class="small">Reserva confirmada</text>
+  </g>
+  <!-- 5 -->
+  <g transform="translate(980,85)">
+    <rect width="200" height="50" rx="8" class="box"/>
+    <text x="100" y="22" text-anchor="middle" class="txt cap">EN_ENVÍO</text>
+    <text x="100" y="40" text-anchor="middle" class="small">Tracking activo</text>
+  </g>
+  <!-- 6 (Cierre SIEMPRE en COMPRAS) -->
+  <g transform="translate(1200,85)">
+    <rect width="160" height="50" rx="8" class="box"/>
+    <text x="80" y="22" text-anchor="middle" class="txt cap">CERRADA</text>
+    <text x="80" y="40" text-anchor="middle" class="small">Entregada / Cancelada</text>
+  </g>
+
+  <!-- Conectores entre estados (COMPRAS) -->
+  <line x1="240" y1="110" x2="260" y2="110" stroke="#111827" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="480" y1="110" x2="500" y2="110" stroke="#111827" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="720" y1="110" x2="740" y2="110" stroke="#111827" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="960" y1="110" x2="980" y2="110" stroke="#111827" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="1180" y1="110" x2="1200" y2="110" stroke="#111827" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Interacción con STOCK (siempre vuelve a COMPRAS) -->
+  <!-- Baja desde PENDIENTE_STOCK -->
+  <line x1="610" y1="135" x2="610" y2="210" stroke="#111827" stroke-width="2" marker-end="url(#arr)"/>
+  <g transform="translate(520,220)">
+    <rect width="180" height="40" rx="6" class="box"/>
+    <text x="90" y="24" text-anchor="middle" class="txt">STOCK procesa reserva</text>
+  </g>
+  <!-- Subresultados de STOCK (texto, sin cajas extra) -->
+  <!-- OK -->
+  <line x1="610" y1="260" x2="850" y2="260" stroke="#16a34a" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="850" y1="260" x2="850" y2="135" stroke="#16a34a" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="730" y="252" class="small" text-anchor="middle" fill="#065f46">OK → COMPRAS avanza a STOCK_RESERVADO</text>
+  <!-- NO OK o TTL -->
+  <line x1="610" y1="260" x2="1310" y2="260" stroke="#b91c1c" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="1310" y1="260" x2="1310" y2="135" stroke="#b91c1c" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="1060" y="252" class="small" text-anchor="middle" fill="#7f1d1d">NO OK / EXPIRADA → COMPRAS cierra (Cancelada)</text>
+
+  <!-- Interacción con LOGÍSTICA (siempre vuelve a COMPRAS) -->
+  <!-- Baja desde STOCK_RESERVADO -->
+  <line x1="850" y1="135" x2="850" y2="360" stroke="#111827" stroke-width="2" marker-end="url(#arr)"/>
+  <g transform="translate(760,370)">
+    <rect width="180" height="40" rx="6" class="box"/>
+    <text x="90" y="24" text-anchor="middle" class="txt">LOGÍSTICA crea envío</text>
+  </g>
+  <!-- Subestados de LOGISTICA -->
+  <!-- Sube a EN_ENVÍO -->
+  <line x1="850" y1="410" x2="1080" y2="410" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="1080" y1="410" x2="1080" y2="135" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="965" y="402" class="small" text-anchor="middle" fill="#92400e">CREATED / IN_TRANSIT / DELAYED → EN_ENVÍO</text>
+  <!-- Estado final a CERRADA -->
+  <line x1="850" y1="410" x2="1280" y2="410" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="1280" y1="410" x2="1280" y2="135" stroke="#f59e0b" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="1065" y="436" class="small" text-anchor="middle" fill="#92400e">DELIVERED / CANCELLED → COMPRAS cierra</text>
+
+  <!-- Notas superiores -->
+  <text x="370" y="75" class="small">Cliente confirma → COMPRAS crea ORDEN con Cliente + Ítems (snapshot)</text>
+</svg>

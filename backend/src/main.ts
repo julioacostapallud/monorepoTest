@@ -22,18 +22,18 @@ async function bootstrap() {
 
     // Configurar Swagger
     const config = new DocumentBuilder()
-      .setTitle('Monorepo Test API')
-      .setDescription('API del backend para el monorepo con Nest.js')
+      .setTitle('ShopFlow API')
+      .setDescription('API del backend para el portal de compras ShopFlow - Módulo de Compras')
       .setVersion('1.0')
       .addTag('app', 'Endpoints principales de la aplicación')
       .addTag('health', 'Endpoints de salud y monitoreo del sistema')
       .addTag('status', 'Endpoints de información detallada del sistema')
-      .addTag('products', 'Endpoints de gestión de productos')
+      .addTag('products', 'Endpoints de gestión de productos para compras')
       .build();
     
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('api/docs', app, document, {
-      customSiteTitle: 'Monorepo Test API Docs',
+      customSiteTitle: 'ShopFlow API Docs',
       customfavIcon: 'https://nestjs.com/img/logo-small.svg',
       customJs: [
         'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-bundle.min.js',
